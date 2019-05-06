@@ -38,9 +38,32 @@ public class Car {
 	}
 	public void printList(ArrayList<Car> list) {
 		System.out.println("Current Inventory:");
+		int counter = 1;
 		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
+			System.out.println((i + 1) + ". " + list.get(i));
+			counter ++;
 		}
+		System.out.println(counter + ". Quit");
+		
+	}
+	
+	public void selectCar(ArrayList<Car> list, Scanner sc) {
+		int userEntry = Validator.getInt(sc, "Which car would you like? ");
+		System.out.println(list.get(userEntry - 1));
+		System.out.println("Would you like the buy this car? (y/n)");
+		String userResponse = "i";
+		userResponse = sc.next();
+		while(!(userResponse.equalsIgnoreCase("y") || userResponse.equalsIgnoreCase("n"))) {
+			System.out.println("Please enter either \"y\" or \"n\": ");
+		}
+		if (userResponse.equalsIgnoreCase("y")){
+			System.out.println("Excellent! Our finance department will be in touch shortly.");
+			list.remove(userEntry - 1);
+		}else {
+			
+		}
+		
+		
 		
 	}
 
